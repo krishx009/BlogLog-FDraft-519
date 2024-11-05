@@ -1,0 +1,123 @@
+:root {
+  --primary-bg: #f0f2f5;
+  --secondary-bg: #ffffff;
+  --primary-text: #1c1e21;
+  --secondary-text: #65676b;
+  --accent-1: #4267B2;
+  --accent-2: #00B2FF;
+  --accent-3: #5F9EA0;
+  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode {
+  --primary-bg: #18191a;
+  --secondary-bg: #242526;
+  --primary-text: #e4e6eb;
+  --secondary-text: #b0b3b8;
+  --box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--primary-bg);
+  color: var(--primary-text);
+  transition: all 0.3s ease;
+}
+
+.homepage-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: var(--primary-text);
+}
+
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(100px, 1fr));
+  gap: 25px;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.topic-box {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--secondary-bg);
+  border-radius: 15px;
+  text-decoration: none;
+  color: var(--primary-text);
+  font-size: 18px;
+  font-weight: bold;
+  transition: all 0.3s;
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+}
+
+.topic-icon {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.topic-name {
+  text-align: center;
+}
+
+.topic-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--secondary-bg);
+  color: var(--primary-text);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: var(--box-shadow);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .topic-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .topic-grid {
+    grid-template-columns: 1fr;
+  }
+}

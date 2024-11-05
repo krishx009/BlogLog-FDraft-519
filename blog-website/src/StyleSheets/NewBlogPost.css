@@ -1,0 +1,133 @@
+.new-blog-post {
+  
+  background-color: var(--secondary-bg);
+  border: 3px solid var(--primary-text);
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 30px;
+}
+
+.new-blog-post h2 {
+  color: (4, 203, 196);
+  margin-bottom: 20px;
+}
+
+.new-blog-post form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.new-blog-post input,
+.new-blog-post textarea {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid var(--secondary-text);
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.new-blog-post textarea {
+  height: 200px;
+  resize: vertical;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.form-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form-buttons button[type="submit"] {
+  background-color: var(--accent-2);
+  color: var(--secondary-bg);
+}
+
+.form-buttons button[type="submit"]:hover {
+  background-color: var(--accent-1);
+}
+
+.form-buttons button[type="button"] {
+  background-color: var(--secondary-text);
+  color: var(--secondary-bg);
+}
+
+.form-buttons button[type="button"]:hover {
+  background-color: var(--primary-text);
+}
+
+.enhancement-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.enhance-btn {
+  background-color: var(--accent-3);
+  color: var(--secondary-bg);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.enhance-btn:disabled {
+  background-color: var(--secondary-text);
+  cursor: not-allowed;
+}
+
+.enhance-btn:hover:not(:disabled) {
+  background-color: var(--accent-2);
+  transform: translateY(-2px);
+}
+
+.revert-btn {
+  background-color: var(--secondary-text);
+  color: var(--secondary-bg);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.revert-btn:hover {
+  background-color: var(--accent-1);
+}
+
+.enhance-btn.enhancing {
+  position: relative;
+  padding-left: 35px;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top-color: var(--secondary-bg);
+  border-radius: 50%;
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
