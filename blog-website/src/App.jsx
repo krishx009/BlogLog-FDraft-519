@@ -4,6 +4,7 @@ import HomePage from "./Components/HomePage";
 import BlogTopicPage from "./Components/BlogTopicPage";
 import BlogPost from "./Components/BlogPost";
 import Login from "./Components/Login";
+import Contact from "./Components/ContactUs";
 import { Profile } from "./Components/Profile";
 import { AuthProvider } from "./AuthContext";
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </Router>
     </AuthProvider>

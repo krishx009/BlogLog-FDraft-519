@@ -36,6 +36,9 @@ const HomePage = () => {
     <div className={`page-container ${isDarkMode ? 'dark-mode' : ''}`}>
       <Navbar showLoginButton={false} />
       <div className="homepage-content">
+        <h1 className="new">Hi! New To our Website?? Check The Features Section</h1>
+        <br></br>
+        <br></br>
         <h1 className="page-title">Explore Topics</h1>
         <div className="topic-grid">
           {topics.map((topic, index) => (

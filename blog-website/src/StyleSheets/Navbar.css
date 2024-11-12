@@ -1,15 +1,16 @@
 :root {
-  --navbar-bg: #09d457;
-  --navbar-text: #0dff00;
-  --navbar-hover: #119595;
-  --accent-1: #18779f;
+  --navbar-bg: #2c3e50;
+  --navbar-text: #ecf0f1;
+  --navbar-hover: #3498db;
+  --accent-1: #e74c3c;
+  --dropdown-bg: #34495e;
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 5%;
+  padding: 10px 5%;
   background-color: var(--navbar-bg);
   position: fixed;
   width: 90%;
@@ -17,7 +18,7 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  box-shadow: 0 2px 4px rgba(148, 10, 10, 0.1);
+  box-shadow: 0 2px 2px rgb(165, 6, 6);
 }
 
 .navbar-title {
@@ -59,12 +60,34 @@
   height: 2px;
   bottom: -5px;
   left: 0;
-  background-color: var(--accent-1);
+  background-color: var(--navbar-hover);
   transition: width 0.3s;
 }
 
 .navbar-link:hover::after {
   width: 100%;
+}
+
+.features-dropdown {
+  position: relative;
+}
+
+.features-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--dropdown-bg);
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  min-width: 200px;
+  z-index: 1001;
+}
+
+.features-content p {
+  color: var(--navbar-text);
+  margin: 10px 0;
+  font-size: 14px;
 }
 
 @media (max-width: 768px) {
@@ -75,9 +98,19 @@
 
   .navbar-links {
     margin-top: 10px;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .navbar-link {
     font-size: 16px;
+    margin: 5px 0;
+  }
+
+  .features-content {
+    position: static;
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0;
   }
 }

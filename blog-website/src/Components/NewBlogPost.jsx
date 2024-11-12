@@ -1,11 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import "../StyleSheets/NewBlogPost.css";
 
 const API_URL = "http://localhost:5000/api";
 
-// eslint-disable-next-line react/prop-types
-const NewBlogPost = ({ onSubmit, onCancel }) => {
+export default function NewBlogPost({ onSubmit, onCancel }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [originalContent, setOriginalContent] = useState("");
@@ -23,7 +22,7 @@ const NewBlogPost = ({ onSubmit, onCancel }) => {
     if (!content.trim()) return;
 
     setIsEnhancing(true);
-    setOriginalContent(content); // Save original content
+    setOriginalContent(content);
 
     try {
       const response = await axios.post(
@@ -31,34 +30,27 @@ const NewBlogPost = ({ onSubmit, onCancel }) => {
         { content },
         {
           withCredentials: true,
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
         }
       );
 
       if (response.data.enhancedContent) {
         setContent(response.data.enhancedContent);
       } else {
-        console.error("No enhanced content in response:", response.data);
         throw new Error("No enhanced content received");
       }
     } catch (error) {
       console.error("Error enhancing content:", error);
-      if (error.response) {
-        console.error("Server error:", error.response.data);
-        alert(
-          `Failed to enhance content: ${
-            error.response.data.message || "Unknown error"
-          }`
-        );
-      } else {
-        alert("Failed to enhance content. Please try again.");
-      }
+      alert(
+        `Failed to enhance content: ${
+          error.response?.data?.message || "Please try again"
+        }`
+      );
     } finally {
       setIsEnhancing(false);
     }
   };
+
   const revertContent = () => {
     if (originalContent) {
       setContent(originalContent);
@@ -68,31 +60,45 @@ const NewBlogPost = ({ onSubmit, onCancel }) => {
 
   return (
     <div className="new-blog-post">
-      <h2>Create New Blog Post</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Blog Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
-        <textarea
-          placeholder="Blog Content"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          required
-        ></textarea>
-        <div className="enhancement-buttons">
+      <h2 className="new-blog-post__title">Create New Blog Post</h2>
+      <form onSubmit={handleSubmit} className="new-blog-post__form">
+        <div className="new-blog-post__input-group">
+          <label htmlFor="blog-title" className="new-blog-post__label">
+            Blog Title
+          </label>
+          <input
+            id="blog-title"
+            type="text"
+            className="new-blog-post__input"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+        </div>
+        <div className="new-blog-post__input-group">
+          <label htmlFor="blog-content" className="new-blog-post__label">
+            Blog Content
+          </label>
+          <textarea
+            id="blog-content"
+            className="new-blog-post__textarea"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            required
+          ></textarea>
+        </div>
+        <div className="new-blog-post__enhancement-buttons">
           <button
             type="button"
             onClick={enhanceContent}
             disabled={isEnhancing || !content.trim()}
-            className={`enhance-btn ${isEnhancing ? "enhancing" : ""}`}
+            className={`new-blog-post__enhance-btn ${
+              isEnhancing ? "new-blog-post__enhance-btn--enhancing" : ""
+            }`}
           >
             {isEnhancing ? (
               <>
-                <span className="spinner"></span>
+                <span className="new-blog-post__spinner"></span>
                 Enhancing...
               </>
             ) : (
@@ -103,21 +109,25 @@ const NewBlogPost = ({ onSubmit, onCancel }) => {
             <button
               type="button"
               onClick={revertContent}
-              className="revert-btn"
+              className="new-blog-post__revert-btn"
             >
               Revert Changes
             </button>
           )}
         </div>
-        <div className="form-buttons">
-          <button type="submit">Post</button>
-          <button type="button" onClick={onCancel}>
+        <div className="new-blog-post__form-buttons">
+          <button type="submit" className="new-blog-post__submit-btn">
+            Post
+          </button>
+          <button
+            type="button"
+            onClick={onCancel}
+            className="new-blog-post__cancel-btn"
+          >
             Cancel
           </button>
         </div>
       </form>
     </div>
   );
-};
-
-export default NewBlogPost;
+}

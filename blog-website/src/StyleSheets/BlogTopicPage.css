@@ -136,9 +136,6 @@
 .new-post-btn:hover {
   background-color: var(--accent-1);
 }
-
-
-
 .topic-header {
   display: flex;
   justify-content: space-between;

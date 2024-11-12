@@ -59,17 +59,13 @@ router.get("/user/:userId", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  try{
-    const blog = await Blog.findById(req.params.id);
-    if (!blog){
-      return res.status(404).json({ message: "Blog not found" });
-    }
-    const newBlog = Blog.filter((blog) => blog.id !== req.params.id)
-    res.json(newBlog);
-    return res.status(200)
-  }catch(error) {
+  try {
+    const { id: blogID } = req.params;
+    const blog = await Blog.findOneAndDelete({ _id: blogID });
+    res.status(200).json({ blog });
+  } catch (error) {
     res.status(500).json({ message: error.message });
   }
-})
+});
 
 export default router;
