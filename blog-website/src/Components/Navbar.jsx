@@ -28,7 +28,8 @@ export default function Navbar({ showLoginButton }) {
               <p>✓ 😌You Can Edit and Delete Your Own Blogs in Your Profile😁</p>
               <p>✓ 🤠AI-powered content enhancement</p>
               <p>✓ 😋AI blog summarization</p>
-              <p>✓ If You Have Made it Upto here You Are a Genius 🤓</p>
+              <p>🔐Your Details are Hidden for Security Reasons🪪</p> 
+              <p>✓ If You Have Read it Upto here You Are a Genius 🤓</p>
               <p>Please Leave Us a Feedback in the Contact Page</p> 
             </div>
           )}

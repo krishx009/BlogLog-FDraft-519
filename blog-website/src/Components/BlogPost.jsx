@@ -48,9 +48,9 @@ const BlogPost = () => {
             <span className="blog-date">
               Posted on: {formatDate(blog.createdAt)}
             </span>
-            {/* {blog.author && (
-              <span className="blog-author">By: {blog.author.displayName}</span>
-            )} */}
+             {blog.author && (
+              <span className="blog-author">By: {blog.author.displayname}</span>
+            )} 
           </div>
           <div className="blog-body">{blog.content}</div>
         </article>

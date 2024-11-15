@@ -19,7 +19,7 @@ router.post("/enhance", async (req, res) => {
     As an expert editor, enhance the following blog post while maintaining its original message, style, and personal voice. 
     Make it more engaging and professional, improve clarity and flow, but keep the core content intact.
     Do not change the content of the blog post, only enhance it. The blog post should have the same opinion and message as the original. Do not add any new information. Do not remove any information. Do not change the tone of the blog post. You can change the length of the blog post but do not change it by a large number and do make it more engaging and professional. Do not add your own references or links. 
-    
+    if the user gives you some random text which doesn't make sense  in blog-topic and blog-content just give a message as please provide sufficient information
     Original Blog:
     ${content}
 
@@ -54,5 +54,4 @@ router.post("/enhance", async (req, res) => {
     });
   }
 });
-
 export default router;
