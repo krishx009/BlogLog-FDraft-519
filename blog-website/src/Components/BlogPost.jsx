@@ -5,7 +5,6 @@ import Navbar from "./Navbar";
 import "../StyleSheets/BlogPost.css";
 
 const API_URL = "http://localhost:5000/api";
-
 const BlogPost = () => {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
@@ -31,6 +30,7 @@ const BlogPost = () => {
       hour: "2-digit",
       minute: "2-digit",
     };
+
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 

@@ -1,19 +1,16 @@
 import express from "express";
 import { HfInference } from "@huggingface/inference";
 import dotenv from "dotenv";
-
 dotenv.config();
 
 const router = express.Router();
 const hf = new HfInference(process.env.HF_API_KEY);
-
 router.post("/enhance", async (req, res) => {
   const { content } = req.body;
 
   if (!content) {
     return res.status(400).json({ message: "Content is required" });
   }
-
   try {
     const prompt = `
     As an expert editor, enhance the following blog post while maintaining its original message, style, and personal voice. 
@@ -24,7 +21,6 @@ router.post("/enhance", async (req, res) => {
     ${content}
 
     Enhanced version:`;
-
     const result = await hf.textGeneration({
       model: "mistralai/Mistral-7B-Instruct-v0.2",
       inputs: prompt,
@@ -38,9 +34,8 @@ router.post("/enhance", async (req, res) => {
         return_full_text: false,
       },
     });
-
     const enhancedContent = result.generated_text.replace(prompt, "").trim();
-
+    
     if (!enhancedContent) {
       throw new Error("Empty response from AI model");
     }

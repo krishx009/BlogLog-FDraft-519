@@ -24,7 +24,6 @@ export const Profile = () => {
       console.error("Error fetching user blogs:", error);
     }
   };
-
   const deleteBlog = async (id) => {
     try {
       const response = await axios.delete(`${API_URL}/blogs/${id}`);

@@ -18,8 +18,7 @@ router.get(
 
 router.get("/current_user", (req, res) => {
   res.json(req.user || null);
-});
-
+});       
 router.get("/logout", (req, res) => {
   req.logout(() => {
     res.json({ message: "Logged out" });
